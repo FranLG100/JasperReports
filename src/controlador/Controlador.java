@@ -21,7 +21,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Producto;
 import modelo.database;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -37,9 +39,11 @@ public class Controlador extends database implements ActionListener, MouseListen
     
 	private Vista vista;
 	private GestorInterfaz gui;
+        private Producto producto=new Producto();
+        int datoNumerico=0;
 	
 	public enum AccionMVC {
-		__GOTO_VENTAS, __GOTO_INICIO, __GENERAR_INFORME_VENTAS
+		__GOTO_PRODUCTOS, __GOTO_INICIO, __GENERAR_INFORME_PRODUCTOS, __GENERAR_LISTADO_STOCK,
 	}
 	
 	public Controlador(Vista vista) {
@@ -66,11 +70,14 @@ public class Controlador extends database implements ActionListener, MouseListen
 		this.vista.btnVolverMenuVentas.setActionCommand("__GOTO_INICIO");
 		this.vista.btnVolverMenuVentas.addActionListener(this);
                 
-                this.vista.btnVentas.setActionCommand("__GOTO_VENTAS");
-		this.vista.btnVentas.addActionListener(this);
+                this.vista.btnProductos.setActionCommand("__GOTO_PRODUCTOS");
+		this.vista.btnProductos.addActionListener(this);
                 
-                this.vista.btnGenerarInformeVentas.setActionCommand("__GENERAR_INFORME_VENTAS");
+                this.vista.btnGenerarInformeVentas.setActionCommand("__GENERAR_INFORME_PRODUCTOS");
 		this.vista.btnGenerarInformeVentas.addActionListener(this);
+                
+                this.vista.btnGenerarListadoStock.setActionCommand("__GENERAR_LISTADO_STOCK");
+		this.vista.btnGenerarListadoStock.addActionListener(this);
 		
 		
 	}
@@ -81,30 +88,26 @@ public class Controlador extends database implements ActionListener, MouseListen
 		case __GOTO_INICIO:
 			gui.cambiarPanel(vista.pInicio);
 			break;
-		case __GOTO_VENTAS:
+		case __GOTO_PRODUCTOS:
 			gui.cambiarPanel(vista.pVentas);
+                        vista.tablaProductos.setModel(producto.listarProductos());
 			break;
-                case __GENERAR_INFORME_VENTAS:
+                case __GENERAR_INFORME_PRODUCTOS:
+                        producto.generarInformes();
+			break;
+                case __GENERAR_LISTADO_STOCK:
+                        datoNumerico=Integer.parseInt(vista.campoStock.getText());
                 {
                     try {
-                        //Class.forName("org.apache.derby.jdbc.ClientDriver");
-                        Class.forName("com.mysql.jdbc.Driver");
-                        //Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/ventas", "root","root");
-                        Connection con=this.getConexion();
-                        //String report="src/modelo/VentasReport.jrxml";
-                        
-                        InputStream report=getClass().getResourceAsStream("/modelo/ClientesReport.jrxml");
-                        JasperDesign jd=JRXmlLoader.load(report);
-                        JasperReport jr = JasperCompileManager.compileReport(jd);
-                        //JasperReport jr=JasperCompileManager.compileReport(report);
-                        JasperPrint jp=JasperFillManager.fillReport(jr, null, con);
-                        JasperViewer.viewReport(jp);
-                    } catch (Exception ex) {
+                        producto.generarInformeProductoStock(datoNumerico);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (JRException ex) {
                         Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                
-			break;
                 }
+                        break;
+                
 		}
 		}
 	

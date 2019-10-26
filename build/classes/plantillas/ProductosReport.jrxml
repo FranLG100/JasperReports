@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ClientesReport" language="java" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dd550664-847a-4bb7-8161-270edec2638f">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ClientesReport" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dd550664-847a-4bb7-8161-270edec2638f">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -86,13 +86,6 @@
 				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="e7fea2d9-7040-4e5b-9420-6a17b878eab0"/>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="62" y="0" width="76" height="20" uuid="7d957da2-4b0f-4cbe-bf1f-9120d643968e"/>
-				<textElement>
-					<font size="14"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
 				<reportElement x="165" y="0" width="138" height="20" uuid="12de5417-54d0-4e40-ada1-2b329622a5aa"/>
 				<textElement>
 					<font size="14"/>
@@ -100,18 +93,25 @@
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="337" y="0" width="77" height="20" uuid="406fe4ca-a158-4a5d-9fb9-fddca3c01db1"/>
-				<textElement>
-					<font size="14"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement x="483" y="0" width="69" height="20" uuid="8fca187f-9948-4df5-b116-3b30b5c0c666"/>
-				<textElement>
+				<reportElement x="446" y="0" width="69" height="20" uuid="8fca187f-9948-4df5-b116-3b30b5c0c666"/>
+				<textElement textAlignment="Right">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{stock}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="25" y="0" width="56" height="20" uuid="7d957da2-4b0f-4cbe-bf1f-9120d643968e"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="303" y="0" width="77" height="20" uuid="406fe4ca-a158-4a5d-9fb9-fddca3c01db1"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
