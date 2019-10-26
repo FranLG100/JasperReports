@@ -38,6 +38,12 @@ public class Vista extends javax.swing.JFrame {
         campoStock = new javax.swing.JTextField();
         pInicio = new javax.swing.JPanel();
         btnProductos = new javax.swing.JButton();
+        btnClientes = new javax.swing.JButton();
+        pClientes = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaClientes = new javax.swing.JTable();
+        btnVolverMenuClientes = new javax.swing.JButton();
+        btnGenerarListadoClientes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,24 +118,82 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
+        btnClientes.setText("Clientes");
+
         javax.swing.GroupLayout pInicioLayout = new javax.swing.GroupLayout(pInicio);
         pInicio.setLayout(pInicioLayout);
         pInicioLayout.setHorizontalGroup(
             pInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pInicioLayout.createSequentialGroup()
                 .addGap(91, 91, 91)
-                .addComponent(btnProductos)
-                .addContainerGap(561, Short.MAX_VALUE))
+                .addGroup(pInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pInicioLayout.setVerticalGroup(
             pInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pInicioLayout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(75, 75, 75)
+                .addComponent(btnClientes)
+                .addGap(18, 18, 18)
                 .addComponent(btnProductos)
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pContainer.add(pInicio, "card3");
+
+        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tablaClientes);
+
+        btnVolverMenuClientes.setText("Volver");
+        btnVolverMenuClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverMenuClientesActionPerformed(evt);
+            }
+        });
+
+        btnGenerarListadoClientes.setText("Generar Listado");
+
+        javax.swing.GroupLayout pClientesLayout = new javax.swing.GroupLayout(pClientes);
+        pClientes.setLayout(pClientesLayout);
+        pClientesLayout.setHorizontalGroup(
+            pClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pClientesLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(pClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVolverMenuClientes)
+                    .addComponent(btnGenerarListadoClientes))
+                .addGap(75, 75, 75)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
+        );
+        pClientesLayout.setVerticalGroup(
+            pClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pClientesLayout.createSequentialGroup()
+                .addGroup(pClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pClientesLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pClientesLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(btnGenerarListadoClientes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVolverMenuClientes)))
+                .addGap(26, 26, 26))
+        );
+
+        pContainer.add(pClientes, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,6 +218,10 @@ public class Vista extends javax.swing.JFrame {
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnProductosActionPerformed
+
+    private void btnVolverMenuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverMenuClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolverMenuClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,16 +259,22 @@ public class Vista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnClientes;
     public javax.swing.JButton btnGenerarInformeVentas;
+    public javax.swing.JButton btnGenerarListadoClientes;
     public javax.swing.JButton btnGenerarListadoStock;
     public javax.swing.JButton btnProductos;
+    public javax.swing.JButton btnVolverMenuClientes;
     public javax.swing.JButton btnVolverMenuVentas;
     public javax.swing.JTextField campoStock;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JPanel pClientes;
     public javax.swing.JPanel pContainer;
     public javax.swing.JPanel pInicio;
     public javax.swing.JPanel pVentas;
+    public javax.swing.JTable tablaClientes;
     public javax.swing.JTable tablaProductos;
     // End of variables declaration//GEN-END:variables
 }
