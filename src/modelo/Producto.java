@@ -114,4 +114,25 @@ public class Producto extends database {
 
 	}
     
-}
+    public void insertarProducto(String nombre, double precio, int stock){
+			try {
+				this.getConexion();
+				prepared = this.getConexion().prepareStatement("INSERT INTO productos(nombre,precio,stock,categoria) VALUES('" + nombre + "','"
+						+ precio + "','" + stock + "',1)");
+				prepared.execute();
+				prepared.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+   public void borrarProducto(int id){
+			try {
+				this.getConexion();
+				prepared = this.getConexion().prepareStatement("DELETE FROM productos WHERE ID="+id+"");
+				prepared.execute();
+				prepared.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
